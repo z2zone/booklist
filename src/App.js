@@ -2,13 +2,22 @@ import {useState} from 'react';
 import BookCreate from './Components/BookCreate';
 
 const App = () =>{
-    const [book, setBook] = useState([]);
+    const [books, setBook] = useState([]);
     const createBook = (title) => {
-        console.log("create this book:", title);
+        const newBook = [
+            ...books,
+            {id: new Date().valueOf(), bookTitle: title}
+        ];
+        setBook(newBook);
     }
     
     return (
         <div>
+            {books.map(book =>(
+                <div key={book.id}>
+                    {book.bookTitle}
+                </div>
+            ))}
             <BookCreate createBook={createBook}/>
         </div>
     );
