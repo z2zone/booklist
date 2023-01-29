@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BookEdit from './BookEdit';
 
-const BookCard = ({book, deleteBook}) =>{
+const BookCard = ({book, deleteBook, editBook}) =>{
     const [showEdit, setShowEdit] = useState(false);
 
     const handleDelete = () => {
@@ -10,9 +10,13 @@ const BookCard = ({book, deleteBook}) =>{
     const handleEdit = () => {
         setShowEdit(!showEdit);
     }
+    const handleEditSubmit = (id, newTitle) => {
+        setShowEdit(false);
+        editBook(id, newTitle);
+    }
     return (
         <div className="book-show">
-            {!showEdit ? book.title : <BookEdit/>}
+            {!showEdit ? book.title : <BookEdit book={book} handleEditSubmit={handleEditSubmit}/>}
             <div className="actions">
                 <button 
                     className="edit"
