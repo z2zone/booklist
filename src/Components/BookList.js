@@ -1,11 +1,11 @@
-import BookShow from './BookShow';
+import BookCard from './BookCard';
 
-const BookList = ({books}) =>{
+const BookList = ({books, deleteBook}) =>{
 
     return (
         <div className="book-list">
             {books.map(book=>{
-                return <BookShow key={book.id} book={book}/>
+                return <BookCard key={book.id} book={book} deleteBook={deleteBook}/>
             })}   
         </div>
     );
