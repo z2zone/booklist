@@ -16,6 +16,7 @@ const BookCard = ({book, deleteBook, editBook}) =>{
     }
     return (
         <div className="book-show">
+            <img src={`https://picsum.photos/seed/${book.id}300/200`} alt="pictures" />
             {!showEdit ? book.title : <BookEdit book={book} handleEditSubmit={handleEditSubmit}/>}
             <div className="actions">
                 <button 
