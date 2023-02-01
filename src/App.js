@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {useState} from 'react';
 import BookCreate from './Components/BookCreate';
 import BookList from './Components/BookList';
@@ -5,10 +6,11 @@ import BookList from './Components/BookList';
 const App = () =>{
     const [books, setBook] = useState([]);
 
-    const createBook = (title) => {
+    const createBook = async(title) => {
+        const response = await axios.post('http://localhost:3001/books', {title: title});
         const newBook = [
             ...books,
-            {id: new Date().valueOf(), title: title}
+            response.data
         ];
         setBook(newBook);
     }
